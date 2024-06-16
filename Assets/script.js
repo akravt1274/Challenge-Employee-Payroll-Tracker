@@ -35,6 +35,9 @@ const collectEmployees = function () {
       if (isNaN(Number(salary))) {
         salary = 0; // setting salary to $0 if input is not a number
       }
+      else {
+        salary = Number(salary); 
+      }
     }
     //pushing entered data into employee array 
     employeesArray.push(
