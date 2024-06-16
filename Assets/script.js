@@ -5,37 +5,37 @@ const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
   
   // initializing empty array to store employee data
-  const employeesArray = [];
+  let employeesArray = [];
   
   // using do-while loop to add employee data till user clicks Cancel on "confirm" promt
   do {   
     //getting user input for first name by using prompt() method
     let firstName = prompt("Enter first name:");
     //breaking out from the function if user cancels or if there is no input
-    if (firstName === null || firstName === '') { 
-      return; 
+    if (firstName === null || firstName === '') {
+      break;
     }
 
     //getting user input for last name by using prompt() method
     let lastName = prompt("Enter last name:");
     //breaking out from the function if user cancels or if there is no input
     if (lastName === null || lastName === '') { 
-      return; 
+      break; 
     }
 
     //getting user input for salary by using prompt() method
-    let salary = Number(prompt("Enter salary:"));
-    
+    let salary = prompt("Enter salary:");
+
     //breaking out from the function if user cancels or if there is no input
     if (salary === null || salary === '') {
-      return; 
+      break;
     }
-
-    //validating if salary input is of type number by using isNaN() method
-    if (isNaN(salary)) {
-      salary = 0; // setting salary to $0 if input is not a number
+    else {
+      //validating if salary input is of type Number by using isNaN() method
+      if (isNaN(Number(salary))) {
+        salary = 0; // setting salary to $0 if input is not a number
+      }
     }
-    
     //pushing entered data into employee array 
     employeesArray.push(
       {"firstName": firstName, "lastName": lastName, "salary": salary}
@@ -46,33 +46,41 @@ const collectEmployees = function () {
     
   } while (result);
   //returing added employees as an array objects
-  console.log("Added Employees", employeesArray);
   return employeesArray;
 }
 
 // Display the average salary
-const displayAverageSalary = function(employeesArray) {
+const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
   
-  let totalSalary = 0;
-
-  //going through the employee array and getting salary for each employee
-  for (let i = 0; i < employeesArray.length; i++)
-  {
-    totalSalary += employeesArray[i].salary; //calculating total salary
+  if (employeesArray.length === 0) {
+    return;
   }
-  //calculating average salary by dividing total salary by number of employees
-  const averageSalary = totalSalary / employeesArray.length; 
-  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${(Math.trunc(averageSalary)).toLocaleString("en-US",{style:"currency", currency:"USD"})}.`);
+  else {
+    let totalSalary = 0;
+
+    //going through the employee array and getting salary for each employee
+    for (let i = 0; i < employeesArray.length; i++) {
+      totalSalary += employeesArray[i].salary; //calculating total salary
+    }
+    //calculating average salary by dividing total salary by number of employees
+    const averageSalary = totalSalary / employeesArray.length;
+    console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${(Math.trunc(averageSalary)).toLocaleString("en-US", { style: "currency", currency: "USD" })}.`);
+  }
 }
 
 // Select a random employee
-const getRandomEmployee = function(employeesArray) {
+const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
 
-  //selecting random employee using Math.random() method, and Math.floor() method to round down to its nearest integer  
-  let rndInt = Math.floor((Math.random() * employeesArray.length));
-  console.log(`Congratulations to ${employeesArray[rndInt].firstName} ${employeesArray[rndInt].lastName}, our random drawing winner!`);
+  if (employeesArray.length === 0) {
+    return;
+  }
+  else {
+    //selecting random employee using Math.random() method, and Math.floor() method to round down to its nearest integer  
+    let rndInt = Math.floor((Math.random() * employeesArray.length));
+    console.log(`Congratulations to ${employeesArray[rndInt].firstName} ${employeesArray[rndInt].lastName}, our random drawing winner!`);
+  }
 }
 
 /*
