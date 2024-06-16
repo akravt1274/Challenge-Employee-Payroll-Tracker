@@ -37,6 +37,7 @@ const collectEmployees = function () {
       }
       else {
         salary = Number(salary); 
+        //console.log(salary);
       }
     }
     //pushing entered data into employee array 
