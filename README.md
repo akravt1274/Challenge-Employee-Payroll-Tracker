@@ -28,4 +28,4 @@ This function takes in the generated array of employees, randomly selects one em
 
 ## Review
 
-The URL of the deployed application: [Professional Portfolio (akravt1274.github.io)Links to an external site.](https://akravt1274.github.io/Challenge-Professional-Portfolio/)
+The URL of the deployed application: https://akravt1274.github.io/Challenge-Employee-Payroll-Tracker/
